@@ -1,4 +1,4 @@
-const CACHE_NAME = 'grandtour-v1';
+const CACHE_NAME = 'grandtour-v3';
 const ASSETS = [
   './',
   './index.html',
