@@ -9,14 +9,10 @@
 <meta name="apple-mobile-web-app-title" content="Grand Tour">
 <meta name="application-name" content="Grand Tour">
 <meta name="theme-color" content="#081229">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <!-- v5.0 Grand Tour PWA - 202605012300 -->
 <meta name="description" content="Fer & Rodri · Grand Tour del Mediterráneo · Mayo–Junio 2026">
 <meta name="msapplication-TileColor" content="#081229">
-<title>Eve Frontera · Grand Tour del Mediterráneo v20260502_000330</title>
-
+<title>Eve Frontera · Grand Tour del Mediterráneo</title>
+<link rel="manifest" href="data:application/manifest+json,{%22name%22:%22Grand%20Tour%20del%20Mediterr%C3%A1neo%22,%22short_name%22:%22Grand%20Tour%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22%23081229%22,%22theme_color%22:%22%23081229%22,%22orientation%22:%22portrait%22,%22icons%22:[{%22src%22:%22data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20512%20512%27%3E%3Crect%20width%3D%27512%27%20height%3D%27512%27%20fill%3D%27%23081229%27/%3E%3Ctext%20y%3D%27.9em%27%20font-size%3D%27400%27%3E✈️%3C/text%3E%3C/svg%3E%22,%22sizes%22:%22512x512%22,%22type%22:%22image/svg+xml%22,%22purpose%22:%22any%20maskable%22}]}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -33,7 +29,7 @@ body{background:#020810;display:flex;align-items:flex-start;justify-content:cent
 .screen{display:none;flex-direction:column;flex:1;height:100%;overflow:hidden}
 .screen.active{display:flex;animation:fadeIn .25s ease}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.scroll{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding-bottom:80px}
+.scroll{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding-bottom:80px;scrollbar-width:none;-ms-overflow-style:none}.scroll::-webkit-scrollbar{display:none}
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:56px;background:var(--navy);border-bottom:1px solid var(--gold-border);flex-shrink:0;z-index:10}
 .back-btn{display:flex;align-items:center;gap:6px;color:var(--gold);cursor:pointer;padding:8px;margin-left:-8px;font-size:13px;font-weight:500;letter-spacing:.5px}
 .back-btn svg{flex-shrink:0}
@@ -177,22 +173,10 @@ body{background:#020810;display:flex;align-items:flex-start;justify-content:cent
   <link rel="manifest" href="./manifest.json">
   <meta name="theme-color" content="#081229">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Grand Tour">
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script>
-    // Force unregister old service workers and clear all caches
-    if('serviceWorker' in navigator){
-      navigator.serviceWorker.getRegistrations().then(function(regs){
-        regs.forEach(function(reg){reg.unregister()});
-      });
-      caches.keys().then(function(keys){
-        keys.forEach(function(k){caches.delete(k)});
-      });
-    }
-  </script>
 </head>
 <body>
 <div class="shell">
@@ -252,7 +236,7 @@ body{background:#020810;display:flex;align-items:flex-start;justify-content:cent
       <div style="font-family:'Cormorant Garamond',serif;font-size:12px;font-style:italic;color:rgba(201,168,76,0.55);letter-spacing:2px;margin-bottom:4px">Grand Tour del Mediterráneo</div>
       <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-style:italic;color:#E8C97A;line-height:1.2">Fer &amp; Rodri</div>
       <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:rgba(201,168,76,0.65);margin-top:2px">2026</div>
-      <div style="font-size:12px;color:var(--text-muted);margin-top:6px;font-weight:300">11 Mayo – 2 Junio · 22 días · 7 destinos · 3 países</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:6px;font-weight:300">12 Mayo – 2 Junio · 22 días · 7 destinos · 3 países</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;padding:10px 20px">
       <div style="background:rgba(13,31,69,0.6);border:1px solid var(--gold-border);border-radius:6px;padding:10px 4px;text-align:center"><div style="font-size:14px;margin-bottom:2px">🗺</div><div style="font-size:16px;font-weight:700;color:#E8C97A">7</div><div style="font-size:8px;color:var(--text-muted);margin-top:1px">destinos</div></div>
@@ -262,18 +246,19 @@ body{background:#020810;display:flex;align-items:flex-start;justify-content:cent
     </div>
     <div class="sec-label">ACCESO RÁPIDO<span></span></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 20px">
-      <div onclick="goTo('itinerary')" style="background:rgba(13,31,69,0.6);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:16px 12px;text-align:center;cursor:pointer"><div style="font-size:24px;margin-bottom:6px">🗓</div><div style="font-size:12px;font-weight:500;color:var(--text)">Itinerario</div></div>
+      <div onclick="goTo('itinerary')" style="background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:2px solid rgba(201,168,76,0.6);border-radius:8px;padding:16px 12px;text-align:center;cursor:pointer;grid-column:span 2"><div style="font-size:28px;margin-bottom:6px">🗓</div><div style="font-size:13px;font-weight:700;color:#E8C97A;letter-spacing:1px">ITINERARIO</div><div style="font-size:10px;color:rgba(201,168,76,0.6);margin-top:2px">12 Mayo — 2 Junio · 22 días</div></div>
       <div onclick="showTab('vuelos')" style="background:rgba(13,31,69,0.6);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:16px 12px;text-align:center;cursor:pointer"><div style="font-size:24px;margin-bottom:6px">✈️</div><div style="font-size:12px;font-weight:500;color:var(--text)">Vuelos</div></div>
-      <div onclick="goTo('alojamiento')" style="background:rgba(13,31,69,0.6);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:16px 12px;text-align:center;cursor:pointer"><div style="font-size:24px;margin-bottom:6px">🏨</div><div style="font-size:12px;font-weight:500;color:var(--text)">Hoteles</div></div>
-      <div onclick="goTo('autos')" style="background:rgba(13,31,69,0.6);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:16px 12px;text-align:center;cursor:pointer"><div style="font-size:24px;margin-bottom:6px">🚗</div><div style="font-size:12px;font-weight:500;color:var(--text)">Autos</div></div>
       <div onclick="goTo('calendario')" style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.4);border-radius:8px;padding:16px 12px;text-align:center;cursor:pointer"><div style="font-size:24px;margin-bottom:6px">📅</div><div style="font-size:12px;font-weight:600;color:#E8C97A">Agenda</div></div>
+      <div onclick="goTo('alojamiento')" style="background:rgba(13,31,69,0.6);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:16px 12px;text-align:center;cursor:pointer"><div style="font-size:24px;margin-bottom:6px">🏨</div><div style="font-size:12px;font-weight:500;color:var(--text)">Hoteles</div></div>
       <div onclick="goTo('experiencias')" style="background:rgba(13,31,69,0.6);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:16px 12px;text-align:center;cursor:pointer"><div style="font-size:24px;margin-bottom:6px">🎭</div><div style="font-size:12px;font-weight:500;color:var(--text)">Experiencias</div></div>
+
       <div onclick="goTo('mapa')" style="background:rgba(13,31,69,0.6);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:16px 12px;text-align:center;cursor:pointer"><div style="font-size:24px;margin-bottom:6px">🗺</div><div style="font-size:12px;font-weight:500;color:var(--text)">Mapa</div></div>
       <div onclick="goTo('galeria')" style="background:rgba(13,31,69,0.6);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:16px 12px;text-align:center;cursor:pointer"><div style="font-size:24px;margin-bottom:6px">📸</div><div style="font-size:12px;font-weight:500;color:var(--text)">Fotos</div></div>
       <div onclick="goTo('mensajes')" style="background:rgba(13,31,69,0.6);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:16px 12px;text-align:center;cursor:pointer"><div style="font-size:24px;margin-bottom:6px">💬</div><div style="font-size:12px;font-weight:500;color:var(--text)">Mensajes</div></div>
+      <div onclick="goTo('autos')" style="background:rgba(13,31,69,0.6);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:16px 12px;text-align:center;cursor:pointer"><div style="font-size:24px;margin-bottom:6px">🚗</div><div style="font-size:12px;font-weight:500;color:var(--text)">Autos</div></div>
       <div onclick="goTo('documentos')" style="background:rgba(13,31,69,0.6);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:16px 12px;text-align:center;cursor:pointer"><div style="font-size:24px;margin-bottom:6px">📁</div><div style="font-size:12px;font-weight:500;color:var(--text)">Documentos</div></div>
       <div onclick="goTo('buscar')" style="background:rgba(13,31,69,0.6);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:16px 12px;text-align:center;cursor:pointer"><div style="font-size:24px;margin-bottom:6px">🔍</div><div style="font-size:12px;font-weight:500;color:var(--text)">Buscar</div></div>
-    </div></div>
+    </div>
     <div style="margin:14px 20px 0;background:rgba(201,168,76,0.07);border-left:3px solid #C9A84C;border-radius:0 6px 6px 0;padding:11px 14px">
       <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#C9A84C;margin-bottom:5px">⚠️ PRIMERA ALERTA</div>
       <div style="font-size:13px;font-weight:500;color:var(--text)">COR → MAD · AirEuropa UX122</div>
@@ -401,13 +386,45 @@ body{background:#020810;display:flex;align-items:flex-start;justify-content:cent
   <div class="scroll">
     <div class="sec-label">DÍA A DÍA<span></span></div>
     <div style="padding:0 20px">
-      <div style="margin-bottom:10px;background:rgba(13,31,69,0.5);border-left:3px solid rgba(201,168,76,0.5);border-radius:0 6px 6px 0;padding:12px 14px"><div style="font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:4px">11–13 MAYO · MADRID</div><div style="font-size:15px;font-weight:500;color:var(--text)">🏙 Madrid · INNSiDE by Meliá</div><div style="font-size:11px;color:var(--text-muted);margin-top:5px;line-height:1.6">Llegada al amanecer desde Córdoba. Shuttle T4 c/30min. 1 noche. Vuelo a Venecia el 13.</div><div style="margin-top:6px"><span class="conf-badge" style="font-size:9px">6EBPRI · 102-20402961</span></div></div>
+      <div style="margin-bottom:10px;background:rgba(13,31,69,0.5);border-left:3px solid rgba(201,168,76,0.5);border-radius:0 6px 6px 0;padding:12px 14px"><div style="font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:4px">12–13 MAYO · MADRID</div><div style="font-size:15px;font-weight:500;color:var(--text)">🏙 Madrid · INNSiDE by Meliá</div><div style="font-size:11px;color:var(--text-muted);margin-top:5px;line-height:1.6">Llegada al amanecer desde Córdoba. Shuttle T4 c/30min. 1 noche. Vuelo a Venecia el 13.</div><div style="margin-top:6px"><span class="conf-badge" style="font-size:9px">6EBPRI · 102-20402961</span></div></div>
       <div style="margin-bottom:10px;background:rgba(13,31,69,0.5);border-left:3px solid rgba(201,168,76,0.5);border-radius:0 6px 6px 0;padding:12px 14px"><div style="font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:4px">13–15 MAYO · VENECIA</div><div style="font-size:15px;font-weight:500;color:var(--text)">🎭 Venecia · Hyatt Centric Murano</div><div style="font-size:11px;color:var(--text-muted);margin-top:5px;line-height:1.6">San Marco · Rialto · Dorsoduro · Murano · vaporetto y a pie. 2 noches.</div><div style="margin-top:6px"><span class="conf-badge" style="font-size:9px">16298406</span></div></div>
       <div style="margin-bottom:10px;background:rgba(13,31,69,0.5);border-left:3px solid rgba(201,168,76,0.5);border-radius:0 6px 6px 0;padding:12px 14px"><div style="font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:4px">15–19 MAYO · PUGLIA · EN AUTO</div><div style="font-size:15px;font-weight:500;color:var(--text)">🏛 Bari · Alberobello · Lecce</div><div style="font-size:11px;color:var(--text-muted);margin-top:5px;line-height:1.6">Il Leon Doro Bari · Trullo Love Alberobello · 8Piuhotel Lecce. SIXT desde Bari Estación.</div><div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap"><span class="conf-badge" style="font-size:9px">OT4H6E</span><span class="conf-badge" style="font-size:9px">347CKV</span></div></div>
       <div onclick="goTo('amalfi')" style="margin-bottom:10px;background:rgba(13,60,80,0.5);border-left:3px solid rgba(29,158,117,0.7);border-radius:0 6px 6px 0;padding:12px 14px;cursor:pointer"><div style="font-size:9px;letter-spacing:2px;color:rgba(29,158,117,0.8);text-transform:uppercase;margin-bottom:4px">19–23 MAYO · AMALFI → Ver detalle</div><div style="font-size:15px;font-weight:500;color:var(--text)">🌊 Costa Amalfitana</div><div style="font-size:11px;color:var(--text-muted);margin-top:5px;line-height:1.6">La Bussola Amalfi · Gala Residence Ravello · Capri Cruise Deluxe 21/5.</div><div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap"><span class="conf-badge" style="font-size:9px">1221</span><span class="conf-badge" style="font-size:9px">B4A5B0</span><span class="conf-badge" style="font-size:9px">Capri:01090</span></div></div>
       <div style="margin-bottom:10px;background:rgba(13,31,69,0.5);border-left:3px solid rgba(201,168,76,0.5);border-radius:0 6px 6px 0;padding:12px 14px"><div style="font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:4px">23–26 MAYO · TAORMINA</div><div style="font-size:15px;font-weight:500;color:var(--text)">🌋 Taormina · Sicilia</div><div style="font-size:11px;color:var(--text-muted);margin-top:5px;line-height:1.6">Taormina Rooms Centro Storico · Etna off-road · Isola Bella · Siracusa.</div><div style="margin-top:6px"><span class="conf-badge" style="font-size:9px">KW3FK3</span></div></div>
-      <div style="margin-bottom:10px;background:rgba(13,31,69,0.5);border-left:3px solid rgba(201,168,76,0.5);border-radius:0 6px 6px 0;padding:12px 14px"><div style="font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:4px">26–29 MAYO · NIZA · EN AUTO</div><div style="font-size:15px;font-weight:500;color:var(--text)">☀️ Côte d\'Azur · Niza</div><div style="font-size:11px;color:var(--text-muted);margin-top:5px;line-height:1.6">Château le Cagnard · Monaco · Cannes · Eze. SIXT aeropuerto.</div><div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap"><span class="conf-badge" style="font-size:9px">WKR85U</span><span class="conf-badge" style="font-size:9px">SIXT:9733370273</span></div></div>
-      <div style="margin-bottom:10px;background:rgba(13,31,69,0.5);border-left:3px solid rgba(201,168,76,0.5);border-radius:0 6px 6px 0;padding:12px 14px"><div style="font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:4px">29 MAYO–2 JUNIO · MALLORCA</div><div style="font-size:15px;font-weight:500;color:var(--text)">🏖 Mallorca · Playa</div><div style="font-size:11px;color:var(--text-muted);margin-top:5px;line-height:1.6">Iberostar Waves Playa Muro · Media pensión · Palma · Serra Tramuntana.</div><div style="margin-top:6px"><span class="conf-badge" style="font-size:9px">C1991732</span></div></div>
+      <div style="margin-bottom:10px;background:rgba(13,31,69,0.5);border-left:3px solid rgba(201,168,76,0.5);border-radius:0 6px 6px 0;padding:12px 14px"><div style="font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:4px">26–29 MAYO · NIZA · EN AUTO</div><div style="font-size:15px;font-weight:500;color:var(--text)">☀️ Côte d\'Azur · Niza</div><div style="font-size:11px;color:var(--text-muted);margin-top:5px;line-height:1.6">Château le Cagnard · Monaco · Cannes · Eze. SIXT aeropuerto.</div><div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap"><span class="conf-badge" style="font-size:9px">WKR85U</span><span class="conf-badge" style="font-size:9px">SIXT:9733370273</span></div><div style="margin-top:8px;display:flex;gap:8px"><a class="hotel-link" href="https://maps.google.com/?q=Chateau+le+Cagnard+Cagnes+sur+Mer+France" target="_blank">📍 Maps hotel</a>
+        <a class="hotel-link" href="https://maps.google.com/?q=118+Avenue+de+Verdun+06800+Cagnes-sur-Mer+France" target="_blank">🅿️ P1 Gratis</a>
+        <a class="hotel-link" href="tel:+33493207322">📞 Llamar</a>
+      </div>
+      <!-- Acceso info box collapsible -->
+      <div style="margin-top:10px">
+        <button onclick="var c=this.nextElementSibling;var open=c.style.display!=='none';c.style.display=open?'none':'block';this.querySelector('.arr').textContent=open?'▼':'▲'" style="width:100%;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);border-radius:6px;padding:9px 13px;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:space-between;color:#E8C97A">
+          <span style="font-size:10px;font-weight:600;letter-spacing:1px">🚗 CÓMO LLEGAR AL HOTEL</span>
+          <span class="arr" style="font-size:10px;color:rgba(201,168,76,0.6)">▼</span>
+        </button>
+        <div style="display:none;background:rgba(201,168,76,0.06);border-left:3px solid rgba(201,168,76,0.4);border-radius:0 0 6px 6px;padding:11px 13px">
+        <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.6);margin-bottom:7px">🚗 CÓMO LLEGAR · IMPORTANTE</div>
+        <div style="font-size:11px;color:var(--text);line-height:1.7">
+          El hotel está en un pueblo medieval con calles muy estrechas.<br>
+          <strong style="color:#E8C97A">No entrar con el auto al pueblo.</strong>
+        </div>
+        <div style="font-size:11px;color:var(--text);line-height:1.8;margin-top:6px">
+          🅿️ <strong style="color:#E8C97A">1ª noche (recomendado):</strong> P1 Cementerio Antiguo — GRATIS<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;118 Avenue de Verdun, 06800 Cagnes-sur-Mer<br>
+          🅿️ <strong style="color:#E8C97A">Larga estadía:</strong> Planastel P3 (24hs) — €60/semana o €27.20/día<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;⚠️ Solo vehículos de menos de 1.800 kg<br>
+          📞 <strong style="color:#E8C97A">Al llegar al parking:</strong> Llamar al hotel +33 4 93 20 73 22<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;El equipo los recoge con el auto del hotel 🚗
+        </div>
+        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+          <a href="https://maps.google.com/?q=118+Avenue+de+Verdun+06800+Cagnes-sur-Mer" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;color:#E8C97A;padding:5px 11px;border:1px solid var(--gold-border);border-radius:16px;text-decoration:none">📍 P1 Gratis en Maps</a>
+          <a href="https://maps.google.com/?q=Planastel+Parking+Cagnes-sur-Mer" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;color:#7AABF5;padding:5px 11px;border:1px solid rgba(122,171,245,0.3);border-radius:16px;text-decoration:none">📍 P3 Planastel</a>
+          <a href="tel:+33493207322" style="display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;color:#34C759;padding:5px 11px;border:1px solid rgba(52,199,89,0.3);border-radius:16px;text-decoration:none">📞 +33 4 93 20 73 22</a>
+        </div>
+        </div>
+      </div>
+    </div>
+      <div style="margin-bottom:10px;background:rgba(13,31,69,0.5);border-left:3px solid rgba(201,168,76,0.5);border-radius:0 6px 6px 0;padding:12px 14px">
+        <div style="font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:4px">29 MAYO–2 JUNIO · MALLORCA</div><div style="font-size:15px;font-weight:500;color:var(--text)">🏖 Mallorca · Playa</div><div style="font-size:11px;color:var(--text-muted);margin-top:5px;line-height:1.6">Iberostar Waves Playa Muro · Media pensión · Palma · Serra Tramuntana.</div><div style="margin-top:6px"><span class="conf-badge" style="font-size:9px">C1991732</span></div></div>
     </div>
 
     <!-- RUTA LECCE → SALERNO -->
@@ -442,6 +459,7 @@ body{background:#020810;display:flex;align-items:flex-start;justify-content:cent
       </div>
     </div>
     <div style="height:20px"></div>
+    </div>
   </div>
 </div>
 
@@ -503,7 +521,7 @@ body{background:#020810;display:flex;align-items:flex-start;justify-content:cent
   <div class="scroll">
     <div class="sec-label">10 HOTELES CONFIRMADOS<span></span></div>
     <div style="padding:0 16px">
-      <div class="hotel-card"><div style="font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:8px">11–13 MAYO · MADRID</div><div class="hotel-name">INNSiDE by Meliá Valdebebas</div><div class="hotel-sub">Sin desayuno · Shuttle T4 c/30min</div><div class="hotel-links"><a class="hotel-link" href="https://www.melia.com/es/hoteles/espana/madrid/innside-madrid-valdebebas" target="_blank">🌐 Web</a><a class="hotel-link" href="https://maps.google.com/?q=INNSiDE+Melia+Valdebebas+Madrid" target="_blank">📍 Maps</a></div><div class="hotel-conf"><span class="ok-badge">✅ CONF.</span><div style="display:flex;gap:8px"><div style="text-align:center"><div style="font-size:7px;letter-spacing:1px;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:3px">CONFIRMACIÓN</div><span class="conf-badge">6EBPRI</span></div><div style="text-align:center"><div style="font-size:7px;letter-spacing:1px;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:3px">RESERVA</div><span class="conf-badge">102-20402961</span></div></div></div></div>
+      <div class="hotel-card"><div style="font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:8px">12–13 MAYO · MADRID</div><div class="hotel-name">INNSiDE by Meliá Valdebebas</div><div class="hotel-sub">Sin desayuno · Shuttle T4 c/30min</div><div class="hotel-links"><a class="hotel-link" href="https://www.melia.com/es/hoteles/espana/madrid/innside-madrid-valdebebas" target="_blank">🌐 Web</a><a class="hotel-link" href="https://maps.google.com/?q=INNSiDE+Melia+Valdebebas+Madrid" target="_blank">📍 Maps</a></div><div class="hotel-conf"><span class="ok-badge">✅ CONF.</span><div style="display:flex;gap:8px"><div style="text-align:center"><div style="font-size:7px;letter-spacing:1px;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:3px">CONFIRMACIÓN</div><span class="conf-badge">6EBPRI</span></div><div style="text-align:center"><div style="font-size:7px;letter-spacing:1px;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:3px">RESERVA</div><span class="conf-badge">102-20402961</span></div></div></div></div>
       <div class="hotel-card"><div style="font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:8px">13–15 MAYO · VENECIA</div><div class="hotel-name">Hyatt Centric Murano Venice</div><div class="hotel-sub">Sin desayuno · Murano · Traslado aeropuerto</div><div class="hotel-links"><a class="hotel-link" href="https://www.hyatt.com/hyatt-centric/en-US/vcect-hyatt-centric-murano-venice" target="_blank">🌐 Web</a><a class="hotel-link" href="https://maps.google.com/?q=Hyatt+Centric+Murano+Venice" target="_blank">📍 Maps</a></div><div class="hotel-conf"><span class="ok-badge">✅ CONF.</span><div style="text-align:center"><div style="font-size:7px;letter-spacing:1px;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:2px">CONFIRMACIÓN</div><span class="conf-badge">16298406</span></div></div></div>
       <div class="hotel-card"><div style="font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:8px">15–16 MAYO · BARI</div><div class="hotel-name">Il Leon Doro</div><div class="hotel-sub">Con desayuno · Bari</div><div class="hotel-links"><a class="hotel-link" href="https://leonbari.it/" target="_blank">🌐 Web</a><a class="hotel-link" href="https://maps.google.com/?q=Il+Leon+Doro+Bari" target="_blank">📍 Maps</a></div><div class="hotel-conf"><span class="ok-badge">✅ CONF.</span><div style="display:flex;gap:8px"><div style="text-align:center"><div style="font-size:7px;letter-spacing:1px;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:3px">CONFIRMACIÓN</div><span class="conf-badge">OT4H6E</span></div><div style="text-align:center"><div style="font-size:7px;letter-spacing:1px;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:3px">RESERVA</div><span class="conf-badge" style="font-size:10px">HTL-WBD-935843615</span></div></div></div></div>
       <div class="hotel-card"><div style="font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:8px">16–17 MAYO · ALBEROBELLO</div><div class="hotel-name">Trullo Love</div><div class="hotel-sub">Sin desayuno · Trulli Experience</div><div class="hotel-links"><a class="hotel-link" href="https://www.trulliexperience.eu/trulli-e-alloggi/page/2/" target="_blank">🌐 Web</a><a class="hotel-link" href="https://maps.google.com/?q=Trullo+Love+Alberobello" target="_blank">📍 Maps</a></div><div class="hotel-conf"><span class="ok-badge">✅ CONF.</span><div style="text-align:center"><div style="font-size:7px;letter-spacing:1px;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:2px">CONFIRMACIÓN</div><span class="conf-badge">Trulli Experience (WTP)</span></div></div></div>
@@ -593,7 +611,7 @@ body{background:#020810;display:flex;align-items:flex-start;justify-content:cent
   <div class="scroll">
     <div style="padding:12px 16px 8px">
       <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:#E8C97A;margin-bottom:2px">Grand Tour del Mediterráneo</div>
-      <div style="font-size:11px;color:var(--text-muted)">11 Mayo – 2 Junio 2026 · 7 destinos · 3 países</div>
+      <div style="font-size:11px;color:var(--text-muted)">12 Mayo – 2 Junio 2026 · 7 destinos · 3 países</div>
       <div style="margin-top:8px;display:flex;gap:8px">
         <button onclick="animateRoute()" style="display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;color:#E8C97A;padding:6px 12px;border:1px solid var(--gold-border);border-radius:20px;background:rgba(201,168,76,0.08);cursor:pointer;font-family:inherit">▶ Reproducir ruta</button>
         <button onclick="if(leafletMap){var b=L.latLngBounds(routeCoords.map(function(d){return[d.lat,d.lng]}));leafletMap.fitBounds(b,{padding:[30,30]})}" style="display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;color:var(--text-muted);padding:6px 12px;border:1px solid rgba(255,255,255,0.1);border-radius:20px;background:transparent;cursor:pointer;font-family:inherit">⊞ Ver todo</button>
@@ -647,69 +665,49 @@ body{background:#020810;display:flex;align-items:flex-start;justify-content:cent
     <div style="width:70px"></div>
   </div>
   <div class="scroll" style="padding:0 16px">
-
     <div style="margin-top:14px;margin-bottom:16px">
       <a href="https://www.sixt.es/es/mis-reservas/" target="_blank" style="display:flex;align-items:center;gap:14px;padding:14px;background:linear-gradient(135deg,rgba(255,149,0,0.1),rgba(255,149,0,0.05));border:1px solid rgba(255,149,0,0.4);border-radius:10px;text-decoration:none">
         <div style="width:48px;height:48px;background:linear-gradient(135deg,#FF9500,#FF6B00);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:24px">🚗</div>
-        <div>
-          <div style="font-size:15px;font-weight:700;color:#FF9500">SIXT · Gestionar reservas</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:2px">Ver y modificar tus 3 reservas</div>
-        </div>
+        <div><div style="font-size:15px;font-weight:700;color:#FF9500">SIXT · Gestionar reservas</div><div style="font-size:11px;color:var(--text-muted);margin-top:2px">Ver y modificar tus 3 reservas</div></div>
         <div style="margin-left:auto;font-size:18px;color:#FF9500">→</div>
       </a>
     </div>
-
     <div class="sec-label">RESERVAS CONFIRMADAS<span></span></div>
-
-    <!-- Auto 1: Bari -->
     <div style="background:rgba(13,31,69,0.6);border:1px solid rgba(201,168,76,0.2);border-radius:10px;padding:16px;margin-bottom:12px">
       <div style="font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:6px">16 MAYO · PUGLIA</div>
       <div style="font-family:Cormorant Garamond,serif;font-size:20px;font-style:italic;color:#E8C97A;margin-bottom:4px">SIXT · Bari Centro</div>
-      <div style="font-size:11px;color:var(--text-muted);margin-bottom:10px">Recogida en Bari centro · 16 Mayo<br>Devolución: Salerno · 19 Mayo</div>
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:10px">Recogida Bari centro · 16 Mayo · Devolución Salerno · 19 Mayo</div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
         <span class="ok-badge">✅ CONF.</span>
         <span style="background:rgba(13,31,69,0.8);border:1px solid rgba(201,168,76,0.4);color:#E8C97A;font-size:10px;font-weight:700;padding:4px 10px;border-radius:8px;font-family:monospace">9733369992</span>
-        <a href="https://maps.google.com/?q=SIXT+Bari+Italia" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;color:#E8C97A;padding:4px 10px;border:1px solid var(--gold-border);border-radius:10px;text-decoration:none">📍 Maps</a>
+        <a href="https://maps.google.com/?q=SIXT+Bari+Italia" target="_blank" style="font-size:10px;font-weight:600;color:#E8C97A;padding:4px 10px;border:1px solid var(--gold-border);border-radius:10px;text-decoration:none">📍 Maps</a>
       </div>
     </div>
-
-    <!-- Auto 2: Niza -->
     <div style="background:rgba(13,31,69,0.6);border:1px solid rgba(201,168,76,0.2);border-radius:10px;padding:16px;margin-bottom:12px">
       <div style="font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:6px">26 MAYO · NIZA</div>
       <div style="font-family:Cormorant Garamond,serif;font-size:20px;font-style:italic;color:#E8C97A;margin-bottom:4px">SIXT · Niza Aeropuerto</div>
-      <div style="font-size:11px;color:var(--text-muted);margin-bottom:10px">Recogida: Aeropuerto Nice Côte d'Azur · 26 Mayo<br>Devolución: Aeropuerto Nice · 29 Mayo</div>
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:10px">Recogida Aeropuerto Nice · 26 Mayo · Devolución · 29 Mayo</div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
         <span class="ok-badge">✅ CONF.</span>
         <span style="background:rgba(13,31,69,0.8);border:1px solid rgba(201,168,76,0.4);color:#E8C97A;font-size:10px;font-weight:700;padding:4px 10px;border-radius:8px;font-family:monospace">9733370273</span>
-        <a href="https://maps.google.com/?q=SIXT+Nice+Airport+France" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;color:#E8C97A;padding:4px 10px;border:1px solid var(--gold-border);border-radius:10px;text-decoration:none">📍 Maps</a>
+        <a href="https://maps.google.com/?q=SIXT+Nice+Airport+France" target="_blank" style="font-size:10px;font-weight:600;color:#E8C97A;padding:4px 10px;border:1px solid var(--gold-border);border-radius:10px;text-decoration:none">📍 Maps</a>
       </div>
     </div>
-
-    <!-- Auto 3: Mallorca -->
     <div style="background:rgba(13,31,69,0.6);border:1px solid rgba(201,168,76,0.2);border-radius:10px;padding:16px;margin-bottom:12px">
       <div style="font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.6);text-transform:uppercase;margin-bottom:6px">29 MAYO · MALLORCA</div>
       <div style="font-family:Cormorant Garamond,serif;font-size:20px;font-style:italic;color:#E8C97A;margin-bottom:4px">SIXT · Palma Aeropuerto</div>
-      <div style="font-size:11px;color:var(--text-muted);margin-bottom:10px">Recogida: Aeropuerto Son Sant Joan · 29 Mayo<br>Devolución: Aeropuerto Palma · 2 Junio</div>
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:10px">Recogida Aeropuerto Son Sant Joan · 29 Mayo · Devolución · 2 Junio</div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
         <span class="ok-badge">✅ CONF.</span>
         <span style="background:rgba(13,31,69,0.8);border:1px solid rgba(201,168,76,0.4);color:#E8C97A;font-size:10px;font-weight:700;padding:4px 10px;border-radius:8px;font-family:monospace">9733370395</span>
-        <a href="https://maps.google.com/?q=SIXT+Palma+de+Mallorca+Airport" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;color:#E8C97A;padding:4px 10px;border:1px solid var(--gold-border);border-radius:10px;text-decoration:none">📍 Maps</a>
+        <a href="https://maps.google.com/?q=SIXT+Palma+de+Mallorca+Airport" target="_blank" style="font-size:10px;font-weight:600;color:#E8C97A;padding:4px 10px;border:1px solid var(--gold-border);border-radius:10px;text-decoration:none">📍 Maps</a>
       </div>
-    </div>
-
-    <div class="sec-label">INFORMACIÓN ÚTIL<span></span></div>
-    <div style="background:rgba(255,149,0,0.06);border:1px solid rgba(255,149,0,0.2);border-radius:8px;padding:12px 14px;margin-bottom:14px;font-size:11px;color:var(--text);line-height:1.7">
-      🪪 Llevá licencia de conducir + internacional<br>
-      💳 Tarjeta de crédito a nombre del conductor<br>
-      📋 Voucher impreso o en Documentos<br>
-      ⛽ Devolver con el mismo nivel de combustible<br>
-      🌍 GPS incluido — configurar en español antes de salir
     </div>
     <div style="height:20px"></div>
   </div>
 </div>
 
-<!-- GASTOS --><!-- GASTOS -->
+<!-- GASTOS -->
 <div class="screen" id="gastos">
   <div class="topbar"><div class="back-btn" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Volver</div><div style="font-size:13px;font-weight:600;color:var(--text)">💸 Gastos</div><div style="width:70px"></div></div>
   <div class="scroll">
@@ -774,20 +772,11 @@ body{background:#020810;display:flex;align-items:flex-start;justify-content:cent
   <div class="topbar"><div class="back-btn" onclick="goBack()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Volver</div><div style="font-size:13px;font-weight:600;color:var(--text)">📋 Documentos</div><div style="width:70px"></div></div>
   <div class="it-tabs"><div class="it-tab on" onclick="switchDocsTab('mis-docs',this)">📁 Docs</div><div class="it-tab" onclick="switchDocsTab('requisitos',this)">✅ Requisitos</div><div class="it-tab" onclick="switchDocsTab('checklist',this)">🧳 Checklist</div></div>
   <div class="scroll">
-    <div id="dtab-mis-docs"><div style="padding:10px 16px 0">
-  <!-- Folder filter tabs -->
-  <div id="doc-folder-tabs" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
-    <button onclick="filterDocs('todos',this)" class="doc-folder-btn active-folder" style="font-size:10px;font-weight:600;padding:5px 12px;border-radius:16px;border:1px solid rgba(201,168,76,0.4);background:rgba(201,168,76,0.15);color:#E8C97A;cursor:pointer;font-family:inherit">📂 Todos</button>
-    <button onclick="filterDocs('✈️ Vuelos',this)" class="doc-folder-btn" style="font-size:10px;font-weight:600;padding:5px 12px;border-radius:16px;border:1px solid rgba(122,171,245,0.3);background:transparent;color:#7AABF5;cursor:pointer;font-family:inherit">✈️ Vuelos</button>
-    <button onclick="filterDocs('🏨 Hoteles',this)" class="doc-folder-btn" style="font-size:10px;font-weight:600;padding:5px 12px;border-radius:16px;border:1px solid rgba(201,168,76,0.3);background:transparent;color:#E8C97A;cursor:pointer;font-family:inherit">🏨 Hoteles</button>
-    <button onclick="filterDocs('🎫 Embarque',this)" class="doc-folder-btn" style="font-size:10px;font-weight:600;padding:5px 12px;border-radius:16px;border:1px solid rgba(139,92,246,0.3);background:transparent;color:#A78BFA;cursor:pointer;font-family:inherit">🎫 Embarque</button>
-    <button onclick="filterDocs('📄 Seguros',this)" class="doc-folder-btn" style="font-size:10px;font-weight:600;padding:5px 12px;border-radius:16px;border:1px solid rgba(52,199,89,0.3);background:transparent;color:#34C759;cursor:pointer;font-family:inherit">📄 Seguros</button>
-    <button onclick="filterDocs('🚗 Autos',this)" class="doc-folder-btn" style="font-size:10px;font-weight:600;padding:5px 12px;border-radius:16px;border:1px solid rgba(255,149,0,0.3);background:transparent;color:#FF9500;cursor:pointer;font-family:inherit">🚗 Autos</button>
-    <button onclick="filterDocs('📎 Otros',this)" class="doc-folder-btn" style="font-size:10px;font-weight:600;padding:5px 12px;border-radius:16px;border:1px solid rgba(255,255,255,0.15);background:transparent;color:var(--text-muted);cursor:pointer;font-family:inherit">📎 Otros</button>
-  </div>
-  <!-- Upload selector -->
-  <div style="display:flex;gap:8px;margin-bottom:4px">
-    <select id="doc-cat-select" style="flex:1;background:rgba(13,31,69,0.8);border:1px solid rgba(201,168,76,0.3);color:#E8C97A;padding:8px 12px;border-radius:6px;font-size:11px;font-family:inherit">
+    <div id="dtab-mis-docs"><input type="file" id="fab-doc-input" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.txt,.xls,.xlsx" style="display:none" onchange="var sel=document.getElementById('doc-cat-select');uploadDocsCat(this,sel?sel.value:currentDocCat)">
+<div style="padding:10px 16px 0">
+  <!-- Category selector -->
+  <div style="display:flex;gap:8px;margin-bottom:8px">
+    <select id="doc-cat-select" style="flex:1;background:rgba(13,31,69,0.8);border:1px solid rgba(201,168,76,0.3);color:#E8C97A;padding:8px 12px;border-radius:6px;font-size:11px;font-family:inherit" onchange="currentDocCat=this.value;var fi=document.getElementById('fab-doc-input');if(fi)fi.setAttribute('data-cat',this.value)">
       <option value="✈️ Vuelos">✈️ Vuelos</option>
       <option value="🏨 Hoteles">🏨 Hoteles</option>
       <option value="🎫 Embarque">🎫 Embarque</option>
@@ -795,23 +784,32 @@ body{background:#020810;display:flex;align-items:flex-start;justify-content:cent
       <option value="🚗 Autos">🚗 Autos</option>
       <option value="📎 Otros">📎 Otros</option>
     </select>
-    <label style="cursor:pointer;flex-shrink:0">
-      <input type="file" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.txt,.xls,.xlsx" style="display:none" onchange="uploadDocsCatSelect(this)">
-      <div style="background:linear-gradient(135deg,#C9A84C,#E8C97A);color:#081229;padding:9px 14px;border-radius:6px;font-size:11px;font-weight:700;white-space:nowrap">+ Subir</div>
+  </div>
+  <!-- Upload buttons -->
+  <div style="display:flex;gap:8px">
+    <label style="flex:1;cursor:pointer">
+      <input type="file" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.txt,.xls,.xlsx" style="display:none" onchange="var sel=document.getElementById('doc-cat-select');uploadDocsCat(this,sel?sel.value:currentDocCat)">
+      <div style="background:linear-gradient(135deg,#C9A84C,#E8C97A);color:#081229;padding:11px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-align:center">📄 + Archivos</div>
+    </label>
+    <label style="cursor:pointer">
+      <input type="file" webkitdirectory multiple style="display:none" onchange="var sel=document.getElementById('doc-cat-select');uploadDocsCat(this,sel?sel.value:currentDocCat)">
+      <div style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.4);color:#E8C97A;padding:11px 14px;border-radius:6px;font-size:10px;font-weight:700;text-align:center;white-space:nowrap">📂 Carpeta</div>
     </label>
   </div>
-  <!-- Carpeta upload -->
-  <div style="display:flex;gap:8px;margin-top:6px">
-    <label style="cursor:pointer;flex:1">
-      <input type="file" webkitdirectory multiple style="display:none" onchange="uploadDocsFromFolder(this)">
-      <div style="background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.4);color:#E8C97A;padding:10px;border-radius:6px;font-size:11px;font-weight:700;text-align:center">📂 Subir carpeta completa</div>
-    </label>
+  <!-- Filter tabs -->
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
+    <button onclick="filterDocs('todos',this)" style="font-size:9px;font-weight:600;padding:4px 10px;border-radius:14px;border:1px solid rgba(201,168,76,0.4);background:rgba(201,168,76,0.15);color:#E8C97A;cursor:pointer;font-family:inherit">Todos</button>
+    <button onclick="filterDocs('✈️ Vuelos',this)" style="font-size:9px;font-weight:600;padding:4px 10px;border-radius:14px;border:1px solid rgba(122,171,245,0.3);background:transparent;color:#7AABF5;cursor:pointer;font-family:inherit">✈️</button>
+    <button onclick="filterDocs('🏨 Hoteles',this)" style="font-size:9px;font-weight:600;padding:4px 10px;border-radius:14px;border:1px solid rgba(201,168,76,0.3);background:transparent;color:#E8C97A;cursor:pointer;font-family:inherit">🏨</button>
+    <button onclick="filterDocs('🎫 Embarque',this)" style="font-size:9px;font-weight:600;padding:4px 10px;border-radius:14px;border:1px solid rgba(139,92,246,0.3);background:transparent;color:#A78BFA;cursor:pointer;font-family:inherit">🎫</button>
+    <button onclick="filterDocs('📄 Seguros',this)" style="font-size:9px;font-weight:600;padding:4px 10px;border-radius:14px;border:1px solid rgba(52,199,89,0.3);background:transparent;color:#34C759;cursor:pointer;font-family:inherit">📄</button>
+    <button onclick="filterDocs('🚗 Autos',this)" style="font-size:9px;font-weight:600;padding:4px 10px;border-radius:14px;border:1px solid rgba(255,149,0,0.3);background:transparent;color:#FF9500;cursor:pointer;font-family:inherit">🚗</button>
+    <button onclick="filterDocs('📎 Otros',this)" style="font-size:9px;font-weight:600;padding:4px 10px;border-radius:14px;border:1px solid rgba(255,255,255,0.15);background:transparent;color:var(--text-muted);cursor:pointer;font-family:inherit">📎</button>
   </div>
 </div>
 <div style="padding:4px 16px 8px">
   <button onclick="saveBoardingPass()" style="width:100%;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.4);color:#E8C97A;padding:11px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit">🎫 Guardar tarjeta de embarque</button>
 </div>
-<input type="file" id="fab-doc-input" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.txt,.xls,.xlsx" style="display:none" onchange="uploadDocsFromFolder(this)">
 <div class="sec-label">DOCUMENTOS<span></span></div><div id="docs-list" style="padding:0 16px"></div><div style="height:20px"></div></div>
     <div id="dtab-requisitos" style="display:none">
       <div class="sec-label">REQUISITOS<span></span></div>
@@ -876,17 +874,6 @@ body{background:#020810;display:flex;align-items:flex-start;justify-content:cent
         <div><div style="font-size:14px;font-weight:700;color:#FF7A5A">Rome2Rio</div><div style="font-size:11px;color:var(--text-muted);margin-top:2px">Cómo llegar de A a B — todos los medios</div></div>
       </a>
     </div>
-    <div class="sec-label">📁 DOCUMENTOS EN LA NUBE<span></span></div>
-    <div style="padding:0 16px">
-      <a href="https://drive.google.com" target="_blank" style="display:flex;align-items:center;gap:14px;padding:14px;background:rgba(13,31,69,0.6);border:1px solid rgba(66,133,244,0.3);border-radius:8px;text-decoration:none;margin-bottom:10px">
-        <div style="width:44px;height:44px;background:linear-gradient(135deg,#1a3a8a,#4285F4);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:22px">📁</div>
-        <div><div style="font-size:14px;font-weight:700;color:#7AABF5">Google Drive</div><div style="font-size:11px;color:var(--text-muted);margin-top:2px">Accedé a todos tus documentos del viaje</div></div>
-      </a>
-      <a href="https://www.dropbox.com" target="_blank" style="display:flex;align-items:center;gap:14px;padding:14px;background:rgba(13,31,69,0.6);border:1px solid rgba(0,100,220,0.3);border-radius:8px;text-decoration:none;margin-bottom:10px">
-        <div style="width:44px;height:44px;background:linear-gradient(135deg,#003d9e,#0061FF);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:22px">📦</div>
-        <div><div style="font-size:14px;font-weight:700;color:#4A9EFF">Dropbox</div><div style="font-size:11px;color:var(--text-muted);margin-top:2px">Compartí archivos con Fer y Rodri</div></div>
-      </a>
-    </div>
     <div class="sec-label">TRADUCTOR<span></span></div>
     <div style="padding:0 16px">
       <a href="https://www.deepl.com/es/translator" target="_blank" style="display:flex;align-items:center;gap:14px;padding:14px;background:rgba(13,31,69,0.6);border:1px solid rgba(42,130,100,0.35);border-radius:8px;text-decoration:none;margin-bottom:10px">
@@ -945,7 +932,6 @@ body{background:#020810;display:flex;align-items:flex-start;justify-content:cent
     <button class="btab" onclick="navTo('mapa')"><span class="btab-icon">🗺</span><span class="btab-lbl">Mapa</span></button>
     <button class="btab" onclick="navTo('gastos')"><span class="btab-icon">💸</span><span class="btab-lbl">Gastos</span></button>
     <button class="btab" onclick="navTo('calendario')"><span class="btab-icon">📅</span><span class="btab-lbl">Agenda</span></button>
-    <button class="btab" onclick="navTo('autos')"><span class="btab-icon">🚗</span><span class="btab-lbl">Autos</span></button>
     <button class="btab" onclick="navTo('documentos')"><span class="btab-icon">📁</span><span class="btab-lbl">Docs</span></button>
     <button class="btab" onclick="navTo('buscar')"><span class="btab-icon">🔍</span><span class="btab-lbl">Buscar</span></button>
   </div>
@@ -954,7 +940,7 @@ body{background:#020810;display:flex;align-items:flex-start;justify-content:cent
 <div id="planner-fab" onclick="openPlannerPanel()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.9)" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></div>
 <script>
 var RUTA_DESTINOS=[
-  {emoji:'🏙',name:'Madrid',dates:'11–13 Mayo',icon:'✈️ →',slug:'madrid'},
+  {emoji:'🏙',name:'Madrid',dates:'12–13 Mayo',icon:'✈️ →',slug:'madrid'},
   {emoji:'🎭',name:'Venecia',dates:'13–15 Mayo',icon:'✈️ →',slug:'venecia'},
   {emoji:'🏛',name:'Puglia · Bari · Alberobello · Lecce',dates:'15–19 Mayo',icon:'✈️ →',slug:'puglia'},
   {emoji:'🌊',name:'Costa Amalfitana · Ravello',dates:'19–23 Mayo',icon:'✈️ →',slug:'amalfi_e'},
@@ -964,7 +950,7 @@ var RUTA_DESTINOS=[
 ];
 
 var MAPA_DESTS={
-  madrid:{emoji:'🏙',name:'Madrid',dates:'11–13 Mayo',hotel:'INNSiDE by Meliá Valdebebas',maps:'https://maps.google.com/?q=Madrid,España',trip:'https://www.tripadvisor.es/Attractions-g187514-Activities-Madrid.html',exp:'madrid'},
+  madrid:{emoji:'🏙',name:'Madrid',dates:'12–13 Mayo',hotel:'INNSiDE by Meliá Valdebebas',maps:'https://maps.google.com/?q=Madrid,España',trip:'https://www.tripadvisor.es/Attractions-g187514-Activities-Madrid.html',exp:'madrid'},
   venecia:{emoji:'🎭',name:'Venecia',dates:'13–15 Mayo',hotel:'Hyatt Centric Murano Venice',maps:'https://maps.google.com/?q=Venice,Italy',trip:'https://www.tripadvisor.es/Attractions-g187870-Activities-Venice.html',exp:'venecia'},
   puglia:{emoji:'🏛',name:'Puglia · Bari',dates:'15–19 Mayo',hotel:'Il Leon Doro · Trullo Love · 8Piuhotel',maps:'https://maps.google.com/?q=Bari,Italy',trip:'https://www.tripadvisor.es/Attractions-g187894-Activities-Bari.html',exp:'puglia'},
   'amalfi_e':{emoji:'🌊',name:'Costa Amalfitana',dates:'19–23 Mayo',hotel:'Hotel La Bussola · Gala Residence Ravello',maps:'https://maps.google.com/?q=Amalfi,Italy',trip:'https://www.tripadvisor.es/Attractions-g187779-Activities-Amalfi.html',exp:'amalfi_e'},
@@ -978,14 +964,14 @@ var EXP_LINKS=[
   {dest:'madrid',emoji:'🎡',name:'GetYourGuide Madrid',url:'https://www.getyourguide.com/es-es/madrid-l46/?adults=1&searchSource=8',color:'#FFB347'},
   {dest:'venecia',emoji:'🦉',name:'TripAdvisor Venecia',url:'https://www.tripadvisor.es/Attractions-g187870-Activities-Venice_Veneto.html',color:'#34C759'},
   {dest:'venecia',emoji:'🎡',name:'GetYourGuide Venecia',url:'https://www.getyourguide.com/es-es/venecia-l35/?adults=1&searchSource=8',color:'#FFB347'},
-  {dest:'puglia',emoji:'🦉',name:'TripAdvisor Bari',url:'https://www.tripadvisor.es/Tourism-g187894-Bari_Province_of_Bari_Apulia-Vacations.html',color:'#34C759'},
-  {dest:'puglia',emoji:'🦉',name:'TripAdvisor Alberobello',url:'https://www.tripadvisor.es/Tourism-g187897-Alberobello_Province_of_Bari_Apulia-Vacations.html',color:'#34C759'},
+  {dest:'puglia',emoji:'🦉',name:'TripAdvisor Bari',url:'https://www.tripadvisor.es/Tourism-g187873-Puglia-Vacations.html',color:'#34C759'},
+  {dest:'puglia',emoji:'🦉',name:'TripAdvisor Alberobello',url:'https://www.tripadvisor.es/Tourism-g187873-Puglia-Vacations.html',color:'#34C759'},
   {dest:'puglia',emoji:'🎡',name:'GetYourGuide Puglia',url:'https://www.getyourguide.com/es-es/apulia-l727/?adults=1&searchSource=8',color:'#FFB347'},
   {dest:'amalfi',emoji:'🦉',name:'TripAdvisor Amalfi',url:'https://www.tripadvisor.es/Tourism-g187779-Amalfi_Province_of_Salerno_Campania-Vacations.html',color:'#34C759'},
   {dest:'amalfi',emoji:'🎡',name:'GetYourGuide Costa Amalfitana',url:'https://www.getyourguide.com/es-es/costa-amalfitana-l32579/?adults=1&searchSource=8',color:'#FFB347'},
   {dest:'amalfi_e',emoji:'🦉',name:'TripAdvisor Amalfi',url:'https://www.tripadvisor.es/Tourism-g187779-Amalfi_Province_of_Salerno_Campania-Vacations.html',color:'#34C759'},
   {dest:'amalfi_e',emoji:'🎡',name:'GetYourGuide Costa Amalfitana',url:'https://www.getyourguide.com/es-es/costa-amalfitana-l32579/?adults=1&searchSource=8',color:'#FFB347'},
-  {dest:'sicilia',emoji:'🦉',name:'TripAdvisor Taormina',url:'https://www.tripadvisor.es/Tourism-g187873-Taormina_Province_of_Messina_Sicily-Vacations.html',color:'#34C759'},
+  {dest:'sicilia',emoji:'🦉',name:'TripAdvisor Taormina',url:'https://www.tripadvisor.es/Tourism-g187892-Taormina_Province_of_Messina_Sicily-Vacations.html',color:'#34C759'},
   {dest:'sicilia',emoji:'🎡',name:'GetYourGuide Taormina',url:'https://www.getyourguide.com/es-es/taormina-l1518/?adults=1&searchSource=8',color:'#FFB347'},
   {dest:'niza',emoji:'🦉',name:'TripAdvisor Niza',url:'https://www.tripadvisor.es/Tourism-g187234-Nice_French_Riviera_Cote_d_Azur_Provence_Alpes_Cote_d_Azur-Vacations.html',color:'#34C759'},
   {dest:'niza',emoji:'🎡',name:'GetYourGuide Costa Azul',url:'https://www.getyourguide.com/es-es/costa-azul-l163/?adults=1&searchSource=8',color:'#FFB347'},
@@ -994,7 +980,7 @@ var EXP_LINKS=[
 ];
 
 var TRIP_EVS=[
-  {date:'2026-05-11',emoji:'✈️',title:'Vuelo COR→MAD · UX122 · 12:05h',type:'Check-in',alarm:true},
+  {date:'2026-05-12',emoji:'✈️',title:'Vuelo COR→MAD · UX122 · 12:05h',type:'Check-in',alarm:true},
   {date:'2026-05-13',emoji:'✈️',title:'Vuelo MAD→VCE · IBO677 · 08:50h · T4 Barajas',type:'Check-in',alarm:true},
   {date:'2026-05-13',emoji:'🏨',title:'Check-in Hyatt Centric Murano Venice',type:'Hotel',alarm:false},
   {date:'2026-05-15',emoji:'✈️',title:'Vuelo VCE→BRI · FR4740 · 16:30h',type:'Check-in',alarm:true},
@@ -1035,7 +1021,7 @@ var resDest='';
 var MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
 var DESTINOS_INFO={
-  madrid:{emoji:'🏙',name:'Madrid',subt:'11–13 Mayo · 1 noche',
+  madrid:{emoji:'🏙',name:'Madrid',subt:'12–13 Mayo · 1 noche',
     historia:'Madrid, fundada en el siglo IX como fortaleza árabe llamada Magerit, se convirtió en capital del Imperio Español en 1561 bajo Felipe II. Hoy es una de las capitales culturales de Europa, con tres museos de arte de clase mundial a pasos de distancia — el Triángulo del Arte.',
     ideas:[
       {icon:'🏛',t:'Museo del Prado',d:'Pinacoteca más importante del mundo. Velázquez, Goya, El Bosco.',maps:'https://maps.google.com/?q=Museo+del+Prado+Madrid'},
@@ -1312,7 +1298,7 @@ function goTo(id){
   if(!navStack.length||navStack[navStack.length-1]!==id)navStack.push(id);
   updateNav(id);updateFabs(id);
   if(id==='mapa'){setTimeout(function(){renderMapa();},200);}
-  if(id==='mensajes'){clearMsgBadge();}
+  if(id==='mensajes')clearMsgBadge();
   if(id==='galeria')renderGalleryContent(currentGallery);
   if(id==='experiencias'){renderExpDest(currentExpDest);renderRestDest(currentRestDest);renderExpLinks();}
 }
@@ -1360,16 +1346,7 @@ function openPlannerPanel(){document.getElementById('planner-panel').classList.a
 function closePlannerPanel(e,force){if(force||(e&&e.target===document.getElementById('planner-panel')))document.getElementById('planner-panel').classList.remove('open')}
 function ppSaveVuelo(){var from=(document.getElementById('pp-fl-from').value||'').trim().toUpperCase(),to=(document.getElementById('pp-fl-to').value||'').trim().toUpperCase(),date=document.getElementById('pp-fl-date').value,time=document.getElementById('pp-fl-time').value,airline=(document.getElementById('pp-fl-airline').value||'').trim();if(!from||!to||!date){showToast('Completá origen, destino y fecha');return}var d=initData();d.calEvents.push({id:Date.now(),date:date,emoji:'✈️',title:from+'→'+to+(time?' '+time+'h':'')+(airline?' · '+airline:''),type:'Vuelo',alarm:true});saveData(d);renderCalendar();showToast('✈️ Vuelo agregado');['pp-fl-from','pp-fl-to','pp-fl-date','pp-fl-time','pp-fl-airline','pp-fl-conf'].forEach(function(id){var el=document.getElementById(id);if(el)el.value=''})}
 function ppSaveHotel(){var name=(document.getElementById('pp-ht-name').value||'').trim(),cin=document.getElementById('pp-ht-in').value,cout=document.getElementById('pp-ht-out').value,conf=(document.getElementById('pp-ht-conf').value||'').trim();if(!name||!cin){showToast('Completá nombre y check-in');return}var d=initData();if(cin)d.calEvents.push({id:Date.now(),date:cin,emoji:'🏨',title:'Check-in '+name+(conf?' · '+conf:''),type:'Hotel',alarm:false});if(cout)d.calEvents.push({id:Date.now()+1,date:cout,emoji:'🏨',title:'Check-out '+name,type:'Hotel',alarm:false});saveData(d);renderCalendar();showToast('🏨 Hotel agregado');['pp-ht-name','pp-ht-conf','pp-ht-in','pp-ht-out'].forEach(function(id){var el=document.getElementById(id);if(el)el.value=''})}
-function ppSendMsg(){
-  var text=(document.getElementById('pp-msg-text').value||'').trim();if(!text)return;
-  var d=initData();
-  d.messages.push({id:Date.now(),from:'planner',text:text,date:new Date().toLocaleDateString('es-AR',{day:'2-digit',month:'short'})});
-  saveData(d);renderMessages();showToast('💬 Enviado');
-  document.getElementById('pp-msg-text').value='';
-  playMsgSound();
-  updateMsgBadge();
-  sendNotification('💬 Nuevo mensaje · Eve Frontera','Tenés un mensaje nuevo en tu app Grand Tour');
-}
+function ppSendMsg(){var text=(document.getElementById('pp-msg-text').value||'').trim();if(!text)return;var d=initData();d.messages.push({id:Date.now(),from:'planner',text:text,date:new Date().toLocaleDateString('es-AR',{day:'2-digit',month:'short'})});saveData(d);renderMessages();showToast('💬 Enviado');document.getElementById('pp-msg-text').value='';playMsgSound();updateMsgBadge();sendNotification('💬 Nuevo mensaje · Eve Frontera','Tenés un mensaje nuevo en tu Grand Tour');}
 function ppDocSelected(input){ppDocFile=input.files[0];var lbl=document.getElementById('pp-doc-label');if(lbl&&ppDocFile)lbl.textContent='📎 '+ppDocFile.name}
 function ppUploadDoc(){var name=(document.getElementById('pp-doc-name').value||'').trim();if(!name){showToast('Ingresá un nombre');return}var d=initData();var entry={id:Date.now(),name:name,date:new Date().toLocaleDateString('es-AR',{day:'2-digit',month:'short'}),type:ppDocFile?ppDocFile.type:'',src:''};if(ppDocFile){var reader=new FileReader();reader.onload=function(e){entry.src=e.target.result;d.docs.push(entry);saveData(d);renderDocs();showToast('📄 Subido')};reader.readAsDataURL(ppDocFile)}else{d.docs.push(entry);saveData(d);renderDocs();showToast('📄 Agregado')}document.getElementById('pp-doc-name').value='';var lbl=document.getElementById('pp-doc-label');if(lbl)lbl.textContent='📎 Seleccionar archivo';ppDocFile=null}
 
@@ -1564,42 +1541,40 @@ function addCalEvent(){var title=(document.getElementById('ev-title').value||'')
 function delCalEv(id){var d=initData();d.calEvents=d.calEvents.filter(function(e){return e.id!==id});saveData(d);renderCalendar();if(selDay)selectDay(selDay)}
 
 // ═══ DOCUMENTOS ═══
+var currentDocCat='📎 Otros';
 var currentDocFilter='todos';
-function filterDocs(cat, el){
+
+function filterDocs(cat,el){
   currentDocFilter=cat;
-  document.querySelectorAll('.doc-folder-btn').forEach(function(b){
-    b.style.background='transparent';b.style.opacity='0.7';
-    b.classList.remove('active-folder');
-  });
-  if(el){el.style.background='rgba(201,168,76,0.15)';el.style.opacity='1';el.classList.add('active-folder');}
+  var tabContainer=document.getElementById('dtab-mis-docs');
+  if(tabContainer){
+    tabContainer.querySelectorAll('button').forEach(function(b){
+      b.style.background='transparent';b.style.fontWeight='600';
+    });
+  }
+  if(el){el.style.background='rgba(201,168,76,0.15)';}
   renderDocs();
 }
-function uploadDocsCatSelect(input){
-  var sel=document.getElementById('doc-cat-select');
-  var cat=sel?sel.value:'📎 Otros';
-  uploadDocsCat(input, cat);
-}
-function uploadDocsCat(input, categoria){
+
+function uploadDocsCat(input,categoria){
+  if(!categoria)categoria=currentDocCat;
   var files=Array.from(input.files||[]);if(!files.length)return;
   var d=initData();var loaded=0;
-  showToast('⏳ Subiendo a '+categoria+'...');
+  showToast('⏳ Subiendo '+files.length+' archivo(s)...');
   files.forEach(function(file){
     var reader=new FileReader();
     reader.onload=function(e){
-      d.docs.push({
-        id:Date.now()+Math.random(),
-        name:file.name,
-        categoria:categoria,
+      d.docs.push({id:Date.now()+Math.random(),name:file.name,categoria:categoria,
         date:new Date().toLocaleDateString('es-AR',{day:'2-digit',month:'short'}),
-        type:file.type,src:e.target.result,size:file.size
-      });
+        type:file.type,src:e.target.result,size:file.size});
       loaded++;
-      if(loaded===files.length){saveData(d);renderDocs();showToast('✅ '+loaded+' archivo(s) en '+categoria)}
+      if(loaded===files.length){saveData(d);renderDocs();showToast('✅ '+loaded+' archivo(s) en '+categoria);}
     };
     reader.readAsDataURL(file);
   });
   input.value='';
 }
+
 function uploadDocsFromFolder(input){var files=Array.from(input.files||[]);if(!files.length)return;var d=initData();var loaded=0;showToast('⏳ Subiendo '+files.length+' archivo(s)...');files.forEach(function(file){var reader=new FileReader();reader.onload=function(e){d.docs.push({id:Date.now()+Math.random(),name:file.name,date:new Date().toLocaleDateString('es-AR',{day:'2-digit',month:'short'}),type:file.type,src:e.target.result,size:file.size});loaded++;if(loaded===files.length){saveData(d);renderDocs();showToast('✅ '+loaded+' documento(s) subido(s)')}};reader.readAsDataURL(file)});input.value=''}
 function saveBoardingPass(){var input=document.createElement('input');input.type='file';input.accept='image/*,.pdf';input.multiple=true;input.onchange=function(){var files=Array.from(input.files||[]);if(!files.length)return;var d=initData();var loaded=0;files.forEach(function(file){var reader=new FileReader();reader.onload=function(e){d.docs.push({id:Date.now()+Math.random(),name:'🎫 '+file.name,date:new Date().toLocaleDateString('es-AR',{day:'2-digit',month:'short'}),type:file.type,src:e.target.result,size:file.size,isBoardingPass:true});loaded++;if(loaded===files.length){saveData(d);renderDocs();showToast('🎫 Tarjeta guardada')}};reader.readAsDataURL(file)})};document.body.appendChild(input);input.click();setTimeout(function(){if(document.body.contains(input))document.body.removeChild(input)},60000)}
 function switchDocsTab(tab,el){['mis-docs','requisitos','checklist'].forEach(function(t){var e=document.getElementById('dtab-'+t);if(e)e.style.display=t===tab?'block':'none'});document.querySelectorAll('#documentos .it-tab').forEach(function(t){t.classList.remove('on')});if(el)el.classList.add('on');if(tab==='checklist')renderChecklist()}
@@ -1614,14 +1589,7 @@ function renderDocs(){
     empty.textContent='Sin documentos';
     list.appendChild(empty);return;
   }
-  var docsToShow=currentDocFilter==='todos'?d.docs:d.docs.filter(function(doc){return doc.categoria===currentDocFilter});
-  if(!docsToShow.length&&d.docs.length){
-    var noMatch=document.createElement('div');
-    noMatch.style.cssText='text-align:center;padding:20px;font-size:11px;color:var(--text-muted);font-style:italic';
-    noMatch.textContent='Sin archivos en esta carpeta';
-    list.appendChild(noMatch);return;
-  }
-  docsToShow.forEach(function(doc){
+  d.docs.forEach(function(doc){
     var icon=doc.type&&doc.type.indexOf('pdf')!==-1?'📄':doc.type&&doc.type.indexOf('image')!==-1?'🖼':'📎';
     var size=doc.size?'('+(doc.size>1048576?(doc.size/1048576).toFixed(1)+'MB':(doc.size/1024).toFixed(0)+'KB')+')':'';
     var row=document.createElement('div');
@@ -1632,7 +1600,6 @@ function renderDocs(){
     var iconEl=document.createElement('div');iconEl.style.cssText='font-size:24px;width:36px;text-align:center';iconEl.textContent=icon;
     var info=document.createElement('div');
     var nm=document.createElement('div');nm.style.cssText='font-size:13px;font-weight:500;color:var(--text)';nm.textContent=doc.name;
-    if(doc.categoria){var cat=document.createElement('span');cat.style.cssText='font-size:9px;font-weight:600;color:rgba(201,168,76,0.7);background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);padding:1px 6px;border-radius:8px;margin-left:6px';cat.textContent=doc.categoria;nm.appendChild(cat);}
     var dt=document.createElement('div');dt.style.cssText='font-size:10px;color:var(--text-muted);margin-top:2px';dt.textContent=(doc.date||'')+' '+size;
     info.appendChild(nm);info.appendChild(dt);
     inner.appendChild(iconEl);inner.appendChild(info);
@@ -1653,15 +1620,11 @@ function toggleCheck(row){var dot=row.querySelector('.chk-dot');var txt=row.quer
 
 // ═══ MENSAJES ═══
 function deleteMsg(id){var d=initData();d.messages=d.messages.filter(function(m){return m.id!==id});saveData(d);renderMessages();showToast('Mensaje eliminado')}
-function clientSendMsg(){
-  var input=document.getElementById('client-msg');if(!input)return;
-  var text=input.value.trim();if(!text)return;
-  var d=initData();
-  d.messages.push({id:Date.now(),from:'client',text:text,date:new Date().toLocaleDateString('es-AR',{day:'2-digit',month:'short'})});
-  saveData(d);input.value='';renderMessages();
-  playMsgSound();
-  updateMsgBadge();
-}
+function playMsgSound(){try{var ctx=new(window.AudioContext||window.webkitAudioContext)();var o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.setValueAtTime(880,ctx.currentTime);o.frequency.setValueAtTime(1100,ctx.currentTime+0.1);g.gain.setValueAtTime(0.3,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.3);o.start(ctx.currentTime);o.stop(ctx.currentTime+0.3)}catch(e){}}
+var unreadMsgs=0;
+function updateMsgBadge(){unreadMsgs++;var msgBtn=document.querySelector('.btab[onclick*="mensajes"]');if(msgBtn){var badge=document.getElementById('msg-badge');if(!badge){badge=document.createElement('span');badge.id='msg-badge';badge.style.cssText='position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;background:#E60023;border-radius:50%;font-size:10px;font-weight:700;color:white;display:flex;align-items:center;justify-content:center;border:2px solid #081229;box-shadow:0 0 6px rgba(230,0,35,0.5)';msgBtn.style.position='relative';msgBtn.appendChild(badge);}badge.textContent=unreadMsgs;badge.style.display='flex';}}
+function clearMsgBadge(){unreadMsgs=0;var b=document.getElementById('msg-badge');if(b)b.style.display='none';}
+function clientSendMsg(){var input=document.getElementById('client-msg');if(!input)return;var text=input.value.trim();if(!text)return;var d=initData();d.messages.push({id:Date.now(),from:'client',text:text,date:new Date().toLocaleDateString('es-AR',{day:'2-digit',month:'short'})});saveData(d);input.value='';renderMessages();playMsgSound();}
 function renderMessages(){var d=initData();var list=document.getElementById('msgs-list');if(!list)return;if(!d.messages.length){list.innerHTML='<div style="text-align:center;padding:24px;font-size:11px;color:var(--text-muted);font-style:italic">Sin mensajes</div>';return}list.innerHTML=d.messages.map(function(m){var align=m.from==='planner'?'flex-start':'flex-end';var cls=m.from==='planner'?'msg-planner':'msg-client';var from=m.from==='planner'?'<div style="font-size:9px;color:#C9A84C;margin-bottom:4px;letter-spacing:1px;font-weight:600">EVE FRONTERA</div>':'';return'<div style="display:flex;justify-content:'+align+';margin-bottom:8px;gap:6px;align-items:flex-end">'+(m.from==='client'?'<span onclick="deleteMsg('+m.id+')" style="font-size:11px;color:rgba(255,255,255,0.2);cursor:pointer;padding:2px;flex-shrink:0;align-self:center">✕</span>':'')+'<div class="msg-bubble '+cls+'">'+from+m.text+'<div class="msg-meta">'+(m.date||'')+'</div></div>'+(m.from==='planner'?'<span onclick="deleteMsg('+m.id+')" style="font-size:11px;color:rgba(255,255,255,0.2);cursor:pointer;padding:2px;flex-shrink:0;align-self:center">✕</span>':'')+'</div>'}).join('');list.scrollTop=list.scrollHeight}
 
 // ═══ AMALFI TABS ═══
@@ -1673,45 +1636,6 @@ function showRuta(tipo){document.getElementById('ruta-matera').style.display=tip
 // ═══ EXPORT/IMPORT ═══
 function exportData(){var d=initData();var blob=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='eve-grand-tour-'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(url);showToast('⬇ Exportado')}
 function importData(input){var file=input.files[0];if(!file)return;var reader=new FileReader();reader.onload=function(e){try{saveData(JSON.parse(e.target.result));renderCalendar();renderDocs();renderMessages();renderGastos();showToast('✅ Importado')}catch(err){alert('Error')}};reader.readAsText(file);input.value=''}
-
-// ═══ MENSAJES BADGE + SONIDO ═══
-var unreadMsgs=0;
-function playMsgSound(){
-  try{
-    var ctx=new(window.AudioContext||window.webkitAudioContext)();
-    var o=ctx.createOscillator(),g=ctx.createGain();
-    o.connect(g);g.connect(ctx.destination);
-    o.frequency.setValueAtTime(880,ctx.currentTime);
-    o.frequency.setValueAtTime(1100,ctx.currentTime+0.1);
-    g.gain.setValueAtTime(0.3,ctx.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.3);
-    o.start(ctx.currentTime);o.stop(ctx.currentTime+0.3);
-  }catch(e){}
-}
-function updateMsgBadge(){
-  unreadMsgs++;
-  // Update nav badge
-  var badge=document.getElementById('msg-badge');
-  if(!badge){
-    var msgBtn=document.querySelector('.btab[onclick*="mensajes"]');
-    if(msgBtn){
-      badge=document.createElement('span');
-      badge.id='msg-badge';
-      badge.style.cssText='position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;background:#E60023;border-radius:50%;font-size:10px;font-weight:700;color:white;display:flex;align-items:center;justify-content:center;line-height:1;padding:0 3px;box-shadow:0 0 6px rgba(230,0,35,0.6);border:2px solid #081229';
-      badge.textContent=unreadMsgs;
-      msgBtn.style.position='relative';
-      msgBtn.appendChild(badge);
-    }
-  } else {
-    badge.textContent=unreadMsgs;
-    badge.style.display='flex';
-  }
-}
-function clearMsgBadge(){
-  unreadMsgs=0;
-  var badge=document.getElementById('msg-badge');
-  if(badge)badge.style.display='none';
-}
 
 // ═══ TOAST ═══
 function showToast(msg){var t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';t.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(13,31,69,0.98);border:1px solid rgba(201,168,76,0.4);color:var(--white);padding:9px 18px;border-radius:20px;font-size:12px;font-weight:600;z-index:999;transition:opacity .3s;white-space:nowrap;pointer-events:none;max-width:90%';document.body.appendChild(t)}t.textContent=msg;t.style.opacity='1';clearTimeout(t._t);t._t=setTimeout(function(){t.style.opacity='0'},2800)}
@@ -1743,12 +1667,11 @@ document.addEventListener('DOMContentLoaded',function(){
   renderExpDest('madrid');renderRestDest('madrid_r');renderExpLinks();
   var fab=document.getElementById('main-fab');
   if(fab)fab.addEventListener('click',function(){
-    var curId=navStack.length?navStack[navStack.length-1]:'home';
-    if(curId==='gastos')openGastoModal();
-    else if(curId==='galeria')openPhotoUpload(currentGallery);
-    else if(curId==='calendario'){var ti=document.getElementById('ev-title');if(ti)ti.focus()}
-    else if(curId==='documentos'){document.getElementById('fab-doc-input').click();}
-    else if(curId==='autos')window.open('https://www.sixt.es/es/mis-reservas/','_blank');
+    var a=document.querySelector('.screen.active');if(!a)return;
+    if(a.id==='gastos')openGastoModal();
+    else if(a.id==='galeria')openPhotoUpload(currentGallery);
+    else if(a.id==='calendario'){var ti=document.getElementById('ev-title');if(ti)ti.focus()}
+    else if(a.id==='documentos'){var fi=document.getElementById('fab-doc-input');if(fi)fi.click();}
     else if(role==='planner')openPlannerPanel();
     else openGastoModal();
   });
@@ -1766,11 +1689,7 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 });
 
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('./sw.js')
-    .then(reg => console.log('SW registered:', reg.scope))
-    .catch(err => console.log('SW error:', err));
-}
+if('serviceWorker' in navigator){var swCode="self.addEventListener('install',e=>self.skipWaiting());self.addEventListener('activate',e=>e.waitUntil(clients.claim()));self.addEventListener('fetch',e=>{if(e.request.url.startsWith(self.location.origin)){e.respondWith(caches.open('ef-v5').then(c=>c.match(e.request).then(r=>{var f=fetch(e.request).then(n=>{c.put(e.request,n.clone());return n}).catch(()=>r);return r||f})))}});";var blob=new Blob([swCode],{type:'application/javascript'});navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(function(){})}
 // ═══ EXPERIENCIAS - RENDER ═══
 function renderExpDest(dest){
   var info=DESTINOS_INFO[dest];if(!info)return;
@@ -1823,9 +1742,9 @@ function renderExpDest(dest){
   var tripRestLinks={
     madrid:'https://www.tripadvisor.es/Restaurants-g187514-Madrid.html',
     venecia:'https://www.tripadvisor.es/Restaurants-g187870-Venice_Veneto.html',
-    puglia:'https://www.tripadvisor.com.ar/Restaurants-g187873-Puglia.html',
+    puglia:'https://www.tripadvisor.es/Restaurants-g187894-Bari_Province_of_Bari_Apulia.html',
     amalfi_e:'https://www.tripadvisor.es/Restaurants-g187779-Amalfi_Province_of_Salerno_Campania.html',
-    sicilia:'https://www.tripadvisor.com.ar/Restaurants-g187892-Taormina_Province_of_Messina_Sicily.html',
+    sicilia:'https://www.tripadvisor.es/Restaurants-g187873-Taormina_Province_of_Messina_Sicily.html',
     niza:'https://www.tripadvisor.es/Restaurants-g187234-Nice_French_Riviera_Cote_d_Azur_Provence_Alpes_Cote_d_Azur.html',
     mallorca:'https://www.tripadvisor.es/Restaurants-g187463-Majorca_Balearic_Islands.html'
   };
@@ -1855,6 +1774,9 @@ function renderRestDest(dest){
     html+='<div style="height:14px"></div>';
     html+='<div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,168,76,0.6);margin-bottom:8px">🏆 RESTAURANTES RECOMENDADOS</div>';
   }
+  // TripAdvisor link at top of Qué comer
+  var taRestLinks={madrid_r:'https://www.tripadvisor.es/Restaurants-g187514-Madrid.html',venecia_r:'https://www.tripadvisor.es/Restaurants-g187870-Venice_Veneto.html',puglia_r:'https://www.tripadvisor.com.ar/Restaurants-g187873-Puglia.html',amalfi_r:'https://www.tripadvisor.es/Restaurants-g187779-Amalfi_Province_of_Salerno_Campania.html',sicilia_r:'https://www.tripadvisor.com.ar/Restaurants-g187892-Taormina_Province_of_Messina_Sicily.html',niza_r:'https://www.tripadvisor.es/Restaurants-g187234-Nice_French_Riviera_Cote_d_Azur_Provence_Alpes_Cote_d_Azur.html',mallorca_r:'https://www.tripadvisor.es/Restaurants-g187463-Majorca_Balearic_Islands.html'};
+  if(taRestLinks[dest])html+='<a href="'+taRestLinks[dest]+'" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#34C759;padding:8px 14px;border:1px solid rgba(52,199,89,0.3);border-radius:20px;text-decoration:none;background:rgba(52,199,89,0.07);margin-bottom:12px">🦉 Ver mejores restaurantes en TripAdvisor</a>';
   html+=rests.map(function(r){
     return'<div style="display:flex;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);align-items:flex-start">'+
       '<div style="font-size:16px;font-weight:700;color:var(--gold);width:22px;text-align:center;flex-shrink:0;margin-top:2px">'+(r.r<=3?['🥇','🥈','🥉'][r.r-1]:r.r)+'</div>'+
@@ -1941,7 +1863,7 @@ function renderMapa(){
 function exportFotobook(){
   var d=initData();
   var destinations=[
-    {key:'madrid',name:'Madrid',emoji:'🏙',dates:'11–13 Mayo'},
+    {key:'madrid',name:'Madrid',emoji:'🏙',dates:'12–13 Mayo'},
     {key:'venecia',name:'Venecia',emoji:'🎭',dates:'13–15 Mayo'},
     {key:'puglia',name:'Puglia',emoji:'🏛',dates:'15–19 Mayo'},
     {key:'amalfi_g',name:'Costa Amalfitana',emoji:'🌊',dates:'19–23 Mayo'},
@@ -2019,6 +1941,5 @@ function exportFotobook(){
 }
 
 </script>
-<!-- BUILD:20260502_000330 -->
 </body>
 </html>
