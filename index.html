@@ -1307,10 +1307,10 @@ function showTab(tab){if(tab==='vuelos')goTo('vuelos')}
 function navTo(id){goTo(id)}
 function updateNav(id){
   var nav=document.getElementById('main-nav');if(!nav)return;
-  var show=['home','vuelos','itinerary','amalfi','alojamiento','experiencias','mapa','gastos','galeria','calendario','documentos','mensajes','buscar'];
+  var show=['home','vuelos','itinerary','amalfi','alojamiento','experiencias','mapa','gastos','galeria','calendario','documentos','autos','mensajes','buscar'];
   nav.style.display=show.indexOf(id)!==-1?'flex':'none';
   document.querySelectorAll('.btab').forEach(function(t){t.classList.remove('on')});
-  var map={'home':'home','vuelos':'vuelos','alojamiento':'alojamiento','experiencias':'experiencias','mapa':'mapa','gastos':'gastos','buscar':'buscar','calendario':'calendario'};
+  var map={'home':'home','vuelos':'vuelos','alojamiento':'alojamiento','experiencias':'experiencias','mapa':'mapa','gastos':'gastos','buscar':'buscar','calendario':'calendario','autos':'autos','documentos':'documentos','mensajes':'mensajes','galeria':'galeria'};
   var active=map[id]||'';
   if(active)document.querySelectorAll('.btab').forEach(function(t){if((t.getAttribute('onclick')||'').indexOf("'"+active+"'")!==-1)t.classList.add('on')});
 }
