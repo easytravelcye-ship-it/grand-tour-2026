@@ -1,4 +1,4 @@
-// Minimal SW - no caching, just pass through
+// Minimal SW - pass through, no cache
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', e => {
   e.waitUntil(
@@ -6,4 +6,4 @@ self.addEventListener('activate', e => {
     .then(() => self.clients.claim())
   );
 });
-self.addEventListener('fetch', e => e.respondWith(fetch(e.request).catch(() => new Response('', {status: 503}))));
+self.addEventListener('fetch', e => e.respondWith(fetch(e.request).catch(() => new Response('', {status:503}))));
