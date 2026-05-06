@@ -1720,10 +1720,11 @@ document.addEventListener('DOMContentLoaded',function(){
   renderExpDest('madrid');renderRestDest('madrid_r');renderExpLinks();
   var fab=document.getElementById('main-fab');
   if(fab)fab.addEventListener('click',function(){
-    var a=document.querySelector('.screen.active');if(!a)return;
-    if(a.id==='gastos')openGastoModal();
-    else if(a.id==='galeria')openPhotoUpload(currentGallery);
-    else if(a.id==='calendario'){var ti=document.getElementById('ev-title');if(ti)ti.focus()}
+    var id=navStack.length?navStack[navStack.length-1]:'home';
+    if(id==='gastos')openGastoModal();
+    else if(id==='galeria')openPhotoUpload(currentGallery);
+    else if(id==='calendario'){var ti=document.getElementById('ev-title');if(ti)ti.focus()}
+    else if(id==='documentos'){var fi=document.createElement('input');fi.type='file';fi.multiple=true;fi.accept='.pdf,.jpg,.jpeg,.png,.doc,.docx,.txt';fi.onchange=function(){uploadDocsFromFolder(fi);};fi.click();}
     else if(role==='planner')openPlannerPanel();
     else openGastoModal();
   });
