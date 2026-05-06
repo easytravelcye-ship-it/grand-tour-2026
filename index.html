@@ -1564,44 +1564,7 @@ function deletePhoto(slug,idx){var d=initData();d.photos[slug].splice(idx,1);sav
 function playAlarm(){try{var ctx=new(window.AudioContext||window.webkitAudioContext)();function beep(f,s,dur,v){var o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.value=f;o.type='sine';g.gain.setValueAtTime(0,ctx.currentTime+s);g.gain.linearRampToValueAtTime(v||0.4,ctx.currentTime+s+0.05);g.gain.linearRampToValueAtTime(0,ctx.currentTime+s+dur);o.start(ctx.currentTime+s);o.stop(ctx.currentTime+s+dur+0.1)}beep(880,0,0.15,0.3);beep(1100,0.18,0.15,0.35);beep(1320,0.36,0.25,0.4);beep(1100,0.65,0.4,0.3)}catch(e){}}
 function requestNotificationPermission(){if(!('Notification' in window))return;if(Notification.permission==='granted'){scheduleUpcomingAlarms();return}Notification.requestPermission().then(function(p){if(p==='granted')scheduleUpcomingAlarms()})}
 function sendNotification(title,body){if(Notification.permission==='granted')try{new Notification(title,{body:body})}catch(e){}}
-function playAlarmSound(){
-  try{
-    var ctx=new(window.AudioContext||window.webkitAudioContext)();
-    [523,659,784,659,784].forEach(function(freq,i){
-      var o=ctx.createOscillator(),g=ctx.createGain();
-      o.connect(g);g.connect(ctx.destination);
-      o.frequency.value=freq;
-      o.type='sine';
-      g.gain.setValueAtTime(0,ctx.currentTime+i*0.2);
-      g.gain.linearRampToValueAtTime(0.3,ctx.currentTime+i*0.2+0.05);
-      g.gain.linearRampToValueAtTime(0,ctx.currentTime+i*0.2+0.18);
-      o.start(ctx.currentTime+i*0.2);
-      o.stop(ctx.currentTime+i*0.2+0.2);
-    });
-  }catch(e){}
-}
-
-var _alarmedEvs={};
-function scheduleUpcomingAlarms(){
-  var now=new Date();
-  var ts=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
-  var hhmm=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
-  TRIP_EVS.filter(function(e){return e.date===ts&&e.alarm}).forEach(function(e){
-    var key=e.date+'|'+e.title;
-    if(_alarmedEvs[key])return;
-    // Check if alarm time matches (within 1 min) or it's today and no time set
-    var match=!e.time||(e.time.substring(0,5)===hhmm);
-    if(match){
-      _alarmedEvs[key]=true;
-      playAlarmSound();
-      sendNotification('📅 Hoy · Grand Tour',e.title);
-      showToast('🔔 '+e.title);
-    }
-  });
-}
-
-// Check alarms every minute
-setInterval(scheduleUpcomingAlarms, 60000);
+function scheduleUpcomingAlarms(){var today=new Date();var ts=today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');TRIP_EVS.filter(function(e){return e.date===ts&&e.alarm}).forEach(function(e){sendNotification('📅 Hoy · Grand Tour',e.title)})}
 
 // ═══ CALENDARIO ═══
 var MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
